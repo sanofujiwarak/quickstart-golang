@@ -1,0 +1,15 @@
+kind: pipeline
+name: default
+
+workspace:
+  base: /go
+  path: src/github.com/screwdriver-cd-test/quickstart-golang
+
+steps:
+- name: test
+  image: golang
+  commands:
+  - go get -t ./...
+  - go vet ./...
+  - go test ./...
+  - go build -o hello_go -a ./...
